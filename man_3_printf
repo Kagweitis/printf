@@ -57,6 +57,22 @@ To print the day of the year, where weekday and month are pointers to strings an
 _printf("%s, %s %d, %d\\n", weekday, month, day, year);
 .SH SEE ALSO
 .I printf(3)
-.SH AUTHOR
-George Kimani
+.SH AUTHORS
+.PP
+.RS i
+NAME:
+.B George Kimani
+.RS i
+EMAIL:
+.B kagwegeorge82@gmail.com
+.RE
+.RE
+
+.PP
+.RS i
+NAME:
 Daniel Mbeche
+.RS i
+EMAIL:rhowdan@gmail.com
+.RE
+.RE
