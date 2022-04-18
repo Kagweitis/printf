@@ -1,4 +1,4 @@
-.TH _PRINTF"1" "15 April 2022" "GNU" "_printf man page"
+.TH _PRINTF"1" "18 April 2022" "GNU" "_printf man page"
 .SH NAME
 _printf - print data and format
 .B _printf
@@ -52,7 +52,7 @@ A '%' is written but no argument is converted. The complete version specificatio
 .SH EXAMPLE
 To print the day of the year, where weekday and month are pointers to strings and day and year are integers:
 
-#include "holberton.h"
+#include "main.h"
 
 _printf("%s, %s %d, %d\\n", weekday, month, day, year);
 .SH SEE ALSO
