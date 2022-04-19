@@ -1,35 +1,37 @@
-#include "main.h"
-#include <stdio.h>
+#include "holberton.h"
 /**
-  * print_rot13 - encodes a string into rot13.
-  * @R: string to convert
-  * Return: size the output text
+  * print_rot13 - print 13th character from the input.
+  * @args: argument list.
+  * @len: length.
+  *
+  * Return: numer of chars printed.
   */
-int print_rot13(va_list R)
+int print_rot13(va_list args, int len)
 {
-	int j, i, count = 0;
-	char *r;
-	char input[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz";
-	char output[] = "NOPQRSTUVWXYZABCDEFGHIJKLM nopqrstuvwxyzabcdefghijklm";
+	int i, position;
 
-	r = va_arg(R, char *);
-	
-  if (r == NULL)
-		r = "(null)";
-	
-  for (j = 0; r[j] != '\0'; j++)
+	char r1[] = "NOPQRSTUVWXYZABCDEFGHIJKLM      nopqrstuvwxyzabcdefghijklm";
+
+	char *str = va_arg(args, char *);
+
+	if (str == NULL)
+		return (-1);
+
+	i = 0;
+	position = 0;
+	while (str[i])
 	{
-		for (i = 0; input[i] != '\0'; i++)
+		if ((str[i] >= 'A' && str[i] <= 'Z')
+		|| (str[i] >= 'a' && str[i] <= 'z'))
 		{
-			if (r[j] == input[i])
-			{
-				_putchar(output[i]);
-	
-        count++;
-				
-        break;
-			}
+			position = str[i] - 65;
+			len += _putchar(r1[position]);
 		}
+		else
+			len += _putchar(str[i]);
+
+		i++;
 	}
-	return (count);
+
+	return (len);
 }
