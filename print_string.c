@@ -1,6 +1,6 @@
 #include "main.h"
 /**
-  *print_Str - prints the string.
+  *print_string - prints the string.
   *@args: list of arguments.
   *@len: number of chars.
   *
@@ -9,7 +9,7 @@
   *Return: length of characters printed.
   */
 
-int print_Str(va_list args, int len)
+int print_string(va_list args, int len)
 {
 	int i;
 
