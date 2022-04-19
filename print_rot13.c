@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stdio.h>
 /**
   * print_rot13 - print 13th character from the input.
   * @args: argument list.
