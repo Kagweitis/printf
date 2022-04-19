@@ -1,17 +1,15 @@
 #include "main.h"
 /**
   *print_string - prints the string.
-  *@args: list of arguments.
-  *@len: number of chars.
-  *
   *Description: any char whose ascii code appears between 0 and 127,
   *will be replaced with \x.
   *Return: length of characters printed.
   */
 
-int print_string(va_list args, int len)
+int print_string(va_list s)
 {
 	int i;
+	int len;
 
 	char *str = va_arg(args, char *);
 
