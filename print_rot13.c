@@ -1,39 +1,42 @@
-#include "main.h"
 #include <stdarg.h>
 #include <stdio.h>
+#include "main.h"
 /**
-  * print_rot13 - print 13th character from the input.
-  * @args: argument list.
-  * @len: length.
-  *
-  * Return: numer of chars printed.
-  */
-int print_rot13(va_list args, int len)
+* print_bin - convert to binary
+* @b: number in decinal
+* Return: number of chars printed
+*/
+int print_bin(va_list b)
 {
-	int i, position;
+	unsigned int len, powten, j, digit, n, num;
+	int count = 0;
 
-	char r1[] = "NOPQRSTUVWXYZABCDEFGHIJKLM      nopqrstuvwxyzabcdefghijklm";
-
-	char *str = va_arg(args, char *);
-
-	if (str == NULL)
-		return (-1);
-
-	i = 0;
-	position = 0;
-	while (str[i])
+	n = va_arg(b, unsigned int);
+	if (n != 0)
 	{
-		if ((str[i] >= 'A' && str[i] <= 'Z')
-		|| (str[i] >= 'a' && str[i] <= 'z'))
+		num = n;
+		len = 0;
+		while (num != 0)
 		{
-			position = str[i] - 65;
-			len += _putchar(r1[position]);
+			num /= 2;
+			len++;
 		}
-		else
-			len += _putchar(str[i]);
-
-		i++;
+		powten = 1;
+		for (j = 1; j <= len - 1; j++)
+			powten *= 2;
+		for (j = 1; j <= len; j++)
+		{
+			digit = n / powten;
+			_putchar(digit + '0');
+			count++;
+			n -= digit * powten;
+			powten /= 2;
+		}
 	}
-
-	return (len);
+	else
+	{
+		_putchar('0');
+		return (1);
+	}
+	return (count);
 }
