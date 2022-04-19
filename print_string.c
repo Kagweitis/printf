@@ -1,27 +1,46 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
 /**
- * print_string - writes the character c to stdout
- * @s: The string to print
- *
- * Return: 1.
- */
-int print_string(va_list s)
-{
-	char *my_string;
-	int  i = 0;
+  *print_Str - prints the string.
+  *@args: list of arguments.
+  *@len: number of chars.
+  *
+  *Description: any char whose ascii code appears between 0 and 127,
+  *will be replaced with \x.
+  *Return: length of characters printed.
+  */
 
-	my_string = va_arg(s, char *);
-  
-  if (my_string == NULL)
-		my_string = "(null)";
-	
-  while (my_string[i])
+int print_Str(va_list args, int len)
+{
+	int i;
+
+	char *str = va_arg(args, char *);
+
+	if (str == NULL)
+		str = "(null)";
+	i = 0;
+
+	while (str[i] != '\0')
 	{
-		_putchar(my_string[i]);
-	
-    i++;
+		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
+		{
+			if (str[i] < 15)
+			{
+				len += _printf("\\x0");
+				len += _printf("%X", str[i]);
+				i++;
+			}
+			else
+			{
+				len += _printf("\\x");
+				len += _printf("%X", str[i]);
+				i++;
+			}
+		}
+		else
+		{
+			len += _putchar(str[i]);
+			i++;
+		}
 	}
-	return (i);
+	return (len);
 }
