@@ -1,50 +1,39 @@
-#include <stdarg.h>
-#include <stdio.h>
 #include "main.h"
-/**
-* print_bin - convert to binary
-* @b: number in decinal
-* Return: number of chars printed
-*/
-int print_bin(va_list b)
-{
-	unsigned int len, powten, j, digit, n, num;
-	int count = 0;
+#include <stdlib.h>
 
-	n = va_arg(b, unsigned int);
-	
-	if (n != 0)
+/**
+ * _print R -  prints the rot13'ed string
+ *
+ * Return: chars printed
+ */
+
+int print_R(va_list R)
+{
+	char *str;
+	unsigned int a, b;
+	int count = 0;
+	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	str = va_arg(R, char *);
+	if (str == NULL)
+		str = "(ahyy)";
+	for (a = 0; str[a]; a++)
 	{
-		num = n;
-		len = 0;
-		
-		while (num != 0)
+		for (b = 0; in[b]; b++)
 		{
-			num /= 2;
-			len++;
+			if (in[b] == str[a])
+			{
+				_putchar(out[b]);
+				count++;
+				break;
+			}
 		}
-		powten = 1;
-		
-		for (j = 1; j <= len - 1; j++)
-			powten *= 2;
-		
-		for (j = 1; j <= len; j++)
+		if (!in[b])
 		{
-			digit = n / powten;
-		
-			_putchar(digit + '0');
-			
+			_putchar(str[a]);
 			count++;
-			
-			n -= digit * powten;
-			
-			powten /= 2;
 		}
-	}
-	else
-	{
-		_putchar('0');
-		return (1);
 	}
 	return (count);
 }
